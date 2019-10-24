@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Lunchano
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .ui.menu
+      - if user_signed_in?
+        .active.item
+          %p Lunchano
+        .right.menu
+          .ui.simple.dropdown.item
+            %i.user.icon
+            - if current_user.admin?
+              Welcome, Mr. Administrator
+            - else
+              Welcome, #{current_user.name}
+            %i.dropdown.icon
+            .menu
+              .item
+                %i.edit.outline.icon
+                = link_to 'Edit Profile', edit_user_registration_path, method: :get
+          .item
+            %i.sign.out.alternate.icon
+            = link_to 'Sign out', destroy_user_session_path, method: :delete
+      - else
+        .active.item
+          %p Lunchano
+        .right.menu
+          .item
+            %i.sign.in.alternate.icon
+            = link_to 'Log in', new_user_session_path
+          .item
+            %i.user.plus.icon
+            = link_to 'Sign up', new_user_registration_path
+    = yield
