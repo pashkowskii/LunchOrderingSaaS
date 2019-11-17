@@ -1,0 +1,29 @@
+- if @cart_items.any?
+  .ui.compact.raised.segment{:style => "margin: auto; top: 20%; min-width: 500px; padding: 10px"}
+    .ui.attached.message
+      .header{style: 'text-align: center'}
+        .h2
+          %i.shopping.cart.icon
+          Your Shopping Cart
+    .ui.form.attached.segment
+      %table.ui.very.basic.table
+        %tbody
+          - @cart_items.includes(:menu).each do |item|
+            %tr
+              %td.left.aligned
+                %strong
+                  %h4
+                    = item.menu.title
+              %td.right.aligned{style: 'padding-right: 0px'}
+                %strong
+                  %h4
+                    = number_to_currency item.menu.price
+              %td.right.aligned{style: 'padding-left: 0px'}
+                = button_to "✖", carts_cart_item_path(item), method: "delete", class: "ui compact red button"
+      .ui.two.fields
+        .twelve.wide.field{style: 'margin-top: 0.7em; padding-left: 5px; text-decoration: underline;'}
+          %h4 Total: #{number_to_currency @cart_items.includes(:menu).sum(:price)}
+        .eight.wide.field
+          = link_to "Proceed to checkout", new_order_path(total_price: @cart_items.includes(:menu).sum(:price) ), class: "ui positive button"
+- else
+  = render 'empty_cart'

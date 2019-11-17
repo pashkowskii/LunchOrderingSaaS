@@ -1,0 +1,6 @@
+.ui.tab.segment{"data-tab" => "users", style: 'padding-right: 20px;height: 675px; overflow: auto'}
+  = render 'registered_users'
+.ui.active.tab.segment{"data-tab" => "menu", style: 'border: transparent; margin-bottom: 0px; padding: 0px'}
+  = render 'today_menu'
+.ui.tab.segment{"data-tab" => "orders", style: 'border: transparent; border-bottom: none; padding: 0px;'}
+  = render 'orders', orders: @orders, users: @users, cart_items: @cart_items

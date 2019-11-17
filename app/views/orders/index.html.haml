@@ -1,0 +1,15 @@
+%h2 All Orders
+- @orders.each do |order|
+  %p
+    User Name: #{order.user.name}
+  %p
+    User Email: #{order.user.email}
+  %p
+    Address: #{order.address}
+  %p Cart Items:
+  %ul
+    - order.cart_items.each do |item|
+      %li
+        = item.menu.title
+
+

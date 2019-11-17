@@ -1,0 +1,14 @@
+= form_with(model: menu, local: true, html:{class: 'ui form', style: 'padding-left: 200px'}) do |form|
+  .twelve.wide.field{style: 'font-size: 13px; font-weight: 700; line-height: 19.999px'}
+    = form.label :title
+    = form.text_field :title
+  .twelve.wide.field{style: 'font-size: 13px; font-weight: 700; line-height: 19.999px'}
+    = form.label :price
+    = form.text_field :price
+  .twelve.wide.field
+    = form.label :category
+    = select('menu', 'category', %w(First Main Drinks), class: "ui simple dropdown", :prompt => 'Select Course')
+  .twelve.wide.field
+    = form.hidden_field :day, :value => Date.today.on_weekday? ? Date.today.strftime('%A') : 'Monday'
+  .action{style: 'text-align: center; padding-right: 80px; padding-top: 10px'}
+    = form.submit "Add Item", class: "ui positive button"

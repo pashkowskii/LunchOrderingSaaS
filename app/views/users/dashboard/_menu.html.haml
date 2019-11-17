@@ -1,0 +1,13 @@
+%div{id: 'menu_form'}
+  .ui.tab.compact.borderless.segment{"data-tab" => "Day", style: 'border: none; padding: 0'}
+    .ui.top.attached.tabular.menu
+      %a.active.item{"data-tab" => "Day/First"} First Course
+      %a.item{"data-tab" => "Day/Main"} Main Course
+      %a.item{"data-tab" => "Day/Beverages"} Beverages
+
+    .ui.bottom.attached.active.tab.segment{"data-tab" => "Day/First"}
+      = render  'form', menus: @menus, cart_items: @cart_items, category: 'First'
+    .ui.bottom.attached.tab.segment{"data-tab" => "Day/Main"}
+      = render  'form', menus: @menus, cart_items: @cart_items, category: 'Main'
+    .ui.bottom.attached.tab.segment{"data-tab" => "Day/Beverages"}
+      = render  'form', menus: @menus, cart_items: @cart_items, category: 'Drinks'
