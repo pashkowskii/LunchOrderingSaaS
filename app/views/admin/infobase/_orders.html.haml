@@ -1,0 +1,17 @@
+.ui.top.attached.tabular.menu
+  %a.item{"data-tab" => "Monday"} Monday
+  %a.item{"data-tab" => "Tuesday"} Tuesday
+  %a.item{"data-tab" => "Wednesday"} Wednesday
+  %a.item{"data-tab" => "Thursday"} Thursday
+  %a.item{"data-tab" => "Friday"} Friday
+
+.ui.bottom.attached.tab.segment{"data-tab" => "Monday", style: 'height: 630px; overflow: auto'}
+  = render 'order_form', orders: @orders.where("strftime('%w', updated_at) = ?", '1')
+.ui.bottom.attached.tab.segment{"data-tab" => "Tuesday", style: 'height: 630px; overflow: auto'}
+  = render 'order_form', orders: @orders.where("strftime('%w', updated_at) = ?", '2')
+.ui.bottom.attached.tab.segment{"data-tab" => "Wednesday", style: 'height: 630px; overflow: auto'}
+  = render 'order_form', orders: @orders.where("strftime('%w', updated_at) = ?", '3')
+.ui.bottom.attached.tab.segment{"data-tab" => "Thursday", style: 'height: 630px; overflow: auto'}
+  = render 'order_form', orders: @orders.where("strftime('%w', updated_at) = ?", '4')
+.ui.bottom.attached.tab.segment{"data-tab" => "Friday", style: 'height: 630px; overflow: auto'}
+  = render 'order_form', orders: @orders.where("strftime('%w', updated_at) = ?", '5')

@@ -1,2 +1,14 @@
-%p Welcome, #{current_user.name}
+.ui.centered.container.segment
 
+  .ui.green.ribbon.label
+    %em “Ask not what you can do for your country. Ask what’s for lunch.” - Orson Welles
+
+  .ui.secondary.menu
+    .ui.center.aligned.grid{:style => "margin: 0 auto;"}
+      = link_to 'Monday', users_dashboard_index_path(day: "Monday"), :class => "ui item", 'data-tab' => '1', remote: true
+      = link_to 'Tuesday', users_dashboard_index_path(day: "Tuesday"), :class => "ui item", 'data-tab' => '2', remote: true
+      = link_to 'Wednesday', users_dashboard_index_path(day: "Wednesday"), :class => "ui item", 'data-tab' => '3', remote: true
+      = link_to 'Thursday', users_dashboard_index_path(day: "Thursday"), :class => "ui item", 'data-tab' => '4', remote: true
+      = link_to 'Friday', users_dashboard_index_path(day: "Friday"), :class => "ui item", 'data-tab' => '5', remote: true
+
+  = render 'menu', menus: @menus, cart_items: @cart_items

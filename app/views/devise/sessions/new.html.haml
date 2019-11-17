@@ -1,17 +1,14 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
+.ui.compact.raised.segment{:style => "margin: auto; top: 20%; min-width: 400px; padding: 10px"}
+  .ui.attached.message
+    .header
+      Welcome to our site!
+    %p Fill out the form below to log-in for your account
+  = form_for(resource, as: resource_name, html:{class: 'ui form attached fluid segment'}, url: session_path(resource_name)) do |f|
     .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .field
+      = f.label :password
+      = f.password_field :password, autocomplete: "current-password"
+    .actions{:style => "text-align:center;"}
+      = f.submit "Log in", class: "ui positive button"

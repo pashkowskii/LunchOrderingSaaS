@@ -13,4 +13,8 @@ class SessionsController < Devise::SessionsController
       super
     end
   end
+
+  def after_sign_out_path_for(resource)
+    '/users/sign_in'
+  end
 end

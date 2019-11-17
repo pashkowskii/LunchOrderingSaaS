@@ -7,11 +7,94 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    .ui.menu
+    %link{href: "https://fonts.googleapis.com/css?family=Oswald:400,500,600,700&display=swap", rel: "stylesheet"}
+    %link{href: "https://fonts.googleapis.com/css?family=Sofia&display=swap", rel: "stylesheet"}
+    %script{:src => "http://semantic-ui.com/javascript/library/jquery.min.js"}
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"}
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css", :rel => "stylesheet"}
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"}
+    %style
+      *{font-family: 'Roboto', sans-serif;}
+
+      @keyframes click-wave {
+      0% {
+      height: 40px;
+      width: 40px;
+      opacity: 0.35;
+      position: relative;
+      }
+      100% {
+      height: 200px;
+      width: 200px;
+      margin-left: -80px;
+      margin-top: -80px;
+      opacity: 0;
+      }
+      }
+
+      \.option-input {
+      \-webkit-appearance: none;
+      \-moz-appearance: none;
+      \-ms-appearance: none;
+      \-o-appearance: none;
+      appearance: none;
+      position: relative;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 40px;
+      width: 40px;
+      transition: all 0.15s ease-out 0s;
+      background: #cbd1d8;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 0.5rem;
+      outline: none;
+      position: relative;
+      z-index: 1000;
+      }
+      \.option-input:hover {
+      background: #9faab7;
+      }
+      \.option-input:checked {
+      background: #40e0d0;
+      }
+      \.option-input:checked::before {
+      height: 40px;
+      width: 40px;
+      position: absolute;
+      content: '✔';
+      display: inline-block;
+      font-size: 26.66667px;
+      text-align: center;
+      line-height: 40px;
+      }
+      \.option-input:checked::after {
+      \-webkit-animation: click-wave 0.65s;
+      \-moz-animation: click-wave 0.65s;
+      animation: click-wave 0.65s;
+      background: #40e0d0;
+      content: '';
+      display: block;
+      position: relative;
+      z-index: 100;
+      }
+      \.option-input.radio {
+      border-radius: 50%;
+      }
+      \.option-input.radio::after {
+      border-radius: 50%;
+      }
+
+  %body{style: 'background: #ECE9E6;'}
+    .ui.borderless.menu{style: 'background: white'}
       - if user_signed_in?
-        .active.item
-          %p Lunchano
+        .ui.item{style: 'color: #21ba45;'}
+          %p{style: 'font-family: Sofia, cursive; font-weight: 700; font-size: 28px'}
+            %i.ui.utensils.icon
+            Lunchano
         .right.menu
           .ui.simple.dropdown.item
             %i.user.icon
@@ -23,18 +106,42 @@
             .menu
               .item
                 %i.edit.outline.icon
-                = link_to 'Edit Profile', edit_user_registration_path, method: :get
+                = link_to 'Edit Profile', edit_user_registration_path, method: :get, style: 'text-decoration: none; color: black'
+          - if !current_user.admin?
+            .item
+              %i.ui.shopping.cart.icon
+              = link_to 'Cart', carts_path, method: :get, style: 'text-decoration: none; color: black'
           .item
-            %i.sign.out.alternate.icon
-            = link_to 'Sign out', destroy_user_session_path, method: :delete
+            = button_to 'Sign out', destroy_user_session_path, class: "ui positive button", method: :delete
       - else
-        .active.item
-          %p Lunchano
+        .ui.item{style: 'color: #21ba45;'}
+          %p{style: 'font-family: Sofia, cursive; font-weight: 700; font-size: 28px'}
+            %i.ui.utensils.icon
+            Lunchano
         .right.menu
           .item
-            %i.sign.in.alternate.icon
-            = link_to 'Log in', new_user_session_path
+            = button_to 'Log in', new_user_session_path, class: "ui positive button"
           .item
-            %i.user.plus.icon
-            = link_to 'Sign up', new_user_registration_path
+            = link_to 'Sign up', new_user_registration_path, class: "ui positive button"
     = yield
+
+:javascript
+  $('.ui.dropdown').dropdown();
+  $('.tabular.menu .item').tab();
+  $('.menu .item')
+  .tab();
+  $('.ui.button')
+    .on('click', function() {
+      // programmatically activating tab
+      $.tab('change tab', 'tab-name');
+    });
+  // For User page
+  let current_day_of_week = "#{Date.today.on_weekday? ? Date.today.strftime('%w') : '1'}";
+  $('[data-tab = "#{Date.today.on_weekday? ? Date.today.strftime('%w') : '1'}"]').addClass("active");
+  for (let i = Number(current_day_of_week) + 1; i <= 5; i++) {
+    const x = i.toString()
+    $('[data-tab ="' + x + '"]').removeAttr('href').addClass("disabled");
+  }
+  // For Admin page
+  $('[data-tab = "#{Date.today.on_weekday? ? Date.today.strftime('%A') : 'Monday'}"]').addClass("active");
+  $('[data-tab = "menu"]').addClass("active");

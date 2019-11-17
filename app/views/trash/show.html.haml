@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @menu.title
+%p
+  %strong Price:
+  = @menu.price
+%p
+  %strong Category:
+  = @menu.category
+%p
+  %strong Day:
+  = @menu.day
+= link_to 'Edit', edit_menu_path(@menu)
+|
+= link_to 'Back', menus_path

@@ -8,6 +8,9 @@ gem 'haml-rails', '~> 2.0'
 gem 'resque', '~> 1.25', '>= 1.25.2'
 gem 'semantic-ui-rails'
 gem 'semantic-ui-sass', '~> 2.2', '>= 2.2.1.1'
+gem 'smart_init'
+gem 'bullet'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use sqlite3 as the database for Active Record

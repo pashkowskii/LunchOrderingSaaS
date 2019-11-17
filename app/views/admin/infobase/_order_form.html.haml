@@ -1,0 +1,23 @@
+%table.ui.very.basic.table
+  %thead
+    %tr
+      %th User Name
+      %th User Email
+      %th Delivery Address
+      %th Order Items
+      %th Date of Order
+      %th Price of Order
+  %tbody
+  - orders.includes(:user).each do |order|
+    %tr
+      %td #{order.user.name}
+      %td #{order.user.email}
+      %td #{order.address}
+      %td
+        - order.cart_items.includes(:menu).pluck(:title).each do |item|
+          %li
+            = item
+      %td #{order.updated_at.strftime('%Y-%m-%d %H:%M:%S')}
+      %td #{number_to_currency order.total_price}
+.ui.horizontal.divider{style: 'position: sticky; bottom: 0;'}
+  Total: #{number_to_currency orders.sum(:total_price)}

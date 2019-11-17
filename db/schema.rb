@@ -10,7 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_21_141212) do
+ActiveRecord::Schema.define(version: 2019_11_07_154408) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "menu_id"
+    t.string "itemable_type"
+    t.integer "itemable_id"
+    t.index ["itemable_type", "itemable_id"], name: "index_cart_items_on_itemable_type_and_itemable_id"
+    t.index ["menu_id"], name: "index_cart_items_on_menu_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "title"
+    t.float "price"
+    t.integer "category"
+    t.integer "day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.text "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.decimal "total_price"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
