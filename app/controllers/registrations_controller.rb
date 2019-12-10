@@ -2,7 +2,7 @@
 
 class RegistrationsController < Devise::RegistrationsController
   def create
-    super { resource.update(admin: true) if resource.persisted? && User.count == 1 }
+    super { AdminCreatorService.call(user: resource) if resource.persisted? }
   end
 
   private
@@ -18,3 +18,4 @@ class RegistrationsController < Devise::RegistrationsController
                                  :current_password)
   end
 end
+

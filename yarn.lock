@@ -3700,7 +3700,7 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-jquery@^3.4.1:
+jquery@^3.4.1, jquery@x.*:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
@@ -6071,6 +6071,18 @@ selfsigned@^1.10.7:
   integrity sha512-8M3wBCzeWIJnQfl43IKwOmC4H/RAp50S8DF60znzjW5GVqTcSe2vWclt7hmYVPkKPlHWOu5EaWOMZ2Y6W8ZXTA==
   dependencies:
     node-forge "0.9.0"
+
+semantic-ui-less@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/semantic-ui-less/-/semantic-ui-less-2.4.1.tgz#f5fe6d9160b6655a2f552e7ea553c5b896c2f1aa"
+  integrity sha512-/+nhPV6If2ydCz89/SSWzYD8ualDtjh4Tk3F6cqRj2luZj1DRjJ2nM9NKqmeyLlQFNFM94wpnpKXcjxRzZh5GA==
+  dependencies:
+    jquery x.*
+
+semantic-ui-sass@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/semantic-ui-sass/-/semantic-ui-sass-2.4.2.tgz#ac1151ecf2c1b3d41fe55e4e4db5144a5d90cfec"
+  integrity sha512-UgDCDHqc36kBWjHqVOhYcm12Dewiro6SY80OUBUuSXEKRVn6Uph47OGB+JnGzblRbcmUNdNedGSAwZg8Pk6sDQ==
 
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.5.1, semver@^5.6.0:
   version "5.7.1"

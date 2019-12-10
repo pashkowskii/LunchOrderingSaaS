@@ -3,10 +3,8 @@
 module Users
   class DashboardController < ApplicationController
     def index
-      @current_day_of_week = Date.today.on_weekday? ? Date.today.strftime('%A') : 'Monday'
-      @menus = Menu.where(day: params['day'] || @current_day_of_week)
-      @cart_items = current_cart.cart_items.new
+      @dashboard_facade = Dashboard::IndexFacade.new(day: params['day'],
+                                                     session_cart: session[:cart])
     end
-
   end
 end

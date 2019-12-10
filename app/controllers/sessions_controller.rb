@@ -18,3 +18,4 @@ class SessionsController < Devise::SessionsController
     '/users/sign_in'
   end
 end
+

@@ -9,11 +9,13 @@
     "channels": "^0.0.4",
     "jquery": "^3.4.1",
     "node": "^12.13.0",
+    "semantic-ui-less": "^2.4.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
     "rails-ujs": "^5.2.3",
+    "semantic-ui-sass": "^2.4.2",
     "webpack": "^4.41.2",
     "webpack-dev-server": "^3.9.0"
   }

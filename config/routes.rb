@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'orders/index'
   get 'orders/show'
   get 'orders/new'
-  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
+
+  devise_for :users, controllers: { registrations: 'registrations',
+                                              sessions: 'sessions' }
 
   devise_scope :user do
     root to: 'sessions#new'
@@ -12,10 +14,7 @@ Rails.application.routes.draw do
 
   resources :menus
   resources :orders
-
-  resource :carts, only: %i[destroy show] do
-    resources :cart_items, only: %i[destroy create]
-  end
+  resources :carts
 
   namespace :admin do
     resources :infobase
@@ -24,5 +23,5 @@ Rails.application.routes.draw do
   namespace :users do
     resources :dashboard
   end
-
 end
+

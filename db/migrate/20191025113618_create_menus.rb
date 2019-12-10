@@ -3,8 +3,8 @@ class CreateMenus < ActiveRecord::Migration[6.0]
     create_table :menus do |t|
       t.string :title
       t.float :price
-      t.integer :category
-      t.integer :day
+      t.string :category
+      t.string :day
 
       t.timestamps
     end

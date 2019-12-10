@@ -1,54 +1,54 @@
 # frozen_string_literal: true
 
 menu_list = [
-  ['Chicken curry', rand(2.2...76.9).round(2), 'First', 'Monday'],
-  ['Spanish tortilla', rand(2.2...76.9).round(2), 'First', 'Monday'],
+  ['Chicken curry', rand(2.2...76.9).round(2), 'first_course', 'monday'],
+  ['Spanish tortilla', rand(2.2...76.9).round(2), 'first_course', 'monday'],
 
-  ['Chorizo risotto', rand(2.2...76.9).round(2), 'Main', 'Monday'],
-  ['Venison shanks', rand(2.2...76.9).round(2), 'Main', 'Monday'],
+  ['Chorizo risotto', rand(2.2...76.9).round(2), 'main_course', 'monday'],
+  ['Venison shanks', rand(2.2...76.9).round(2), 'main_course', 'monday'],
 
-  ['Juniper', rand(2.2...76.9).round(2), 'Drinks', 'Monday'],
-  ['Redcurrants', rand(2.2...76.9).round(2), 'Drinks', 'Monday'],
-
-
-  ['Fish cakes', rand(2.2...76.9).round(2), 'First', 'Tuesday'],
-  ['Asian salmon', rand(2.2...76.9).round(2), 'First', 'Tuesday'],
-
-  ['Sweet potato', rand(2.2...76.9).round(2), 'Main', 'Tuesday'],
-  ['Sliced fennel', rand(2.2...76.9).round(2), 'Main', 'Tuesday'],
-
-  ['Almond', rand(2.2...76.9).round(2), 'Drinks', 'Tuesday'],
-  ['Green Tea', rand(2.2...76.9).round(2), 'Drinks', 'Tuesday'],
+  ['Juniper', rand(2.2...76.9).round(2), 'drinks_course', 'monday'],
+  ['Redcurrants', rand(2.2...76.9).round(2), 'drinks_course', 'monday'],
 
 
-  ['Roasted squash', rand(2.2...76.9).round(2), 'First', 'Wednesday'],
-  ['Couscous salad', rand(2.2...76.9).round(2), 'First', 'Wednesday'],
+  ['Fish cakes', rand(2.2...76.9).round(2), 'first_course', 'tuesday'],
+  ['Asian salmon', rand(2.2...76.9).round(2), 'first_course', 'tuesday'],
 
-  ['Chicken in a pot', rand(2.2...76.9).round(2), 'Main', 'Wednesday'],
-  ['Wild rice salad', rand(2.2...76.9).round(2), 'Main', 'Wednesday'],
+  ['Sweet potato', rand(2.2...76.9).round(2), 'main_course', 'tuesday'],
+  ['Sliced fennel', rand(2.2...76.9).round(2), 'main_course', 'tuesday'],
 
-  ['Wine', rand(2.2...76.9).round(2), 'Drinks', 'Wednesday'],
-  ['Juice', rand(2.2...76.9).round(2), 'Drinks', 'Wednesday'],
-
-
-  ['Chicken curry', rand(2.2...76.9).round(2), 'First', 'Thursday'],
-  ['Spanish tortilla', rand(2.2...76.9).round(2), 'First', 'Thursday'],
-
-  ['Mash-topped beef', rand(2.2...76.9).round(2), 'Main', 'Thursday'],
-  ['Guinness pie', rand(2.2...76.9).round(2), 'Main', 'Thursday'],
-
-  ['Hot chocolate', rand(2.2...76.9).round(2), 'Drinks', 'Thursday'],
-  ['Milk', rand(2.2...76.9).round(2), 'Drinks', 'Thursday'],
+  ['Almond', rand(2.2...76.9).round(2), 'drinks_course', 'tuesday'],
+  ['Green Tea', rand(2.2...76.9).round(2), 'drinks_course', 'tuesday'],
 
 
-  ['Courgette Carbonara', rand(2.2...76.9).round(2), 'First', 'Friday'],
-  ['Bean Burgers', rand(2.2...76.9).round(2), 'First', 'Friday'],
+  ['Roasted squash', rand(2.2...76.9).round(2), 'first_course', 'wednesday'],
+  ['Couscous salad', rand(2.2...76.9).round(2), 'first_course', 'wednesday'],
 
-  ['Chicken Soup', rand(2.2...76.9).round(2), 'Main', 'Friday'],
-  ['Roasted Salmon', rand(2.2...76.9).round(2), 'Main', 'Friday'],
+  ['Chicken in a pot', rand(2.2...76.9).round(2), 'main_course', 'wednesday'],
+  ['Wild rice salad', rand(2.2...76.9).round(2), 'main_course', 'wednesday'],
 
-  ['Coffee', rand(2.2...76.9).round(2), 'Drinks', 'Friday'],
-  ['Black Tea', rand(2.2...76.9).round(2), 'Drinks', 'Friday']
+  ['Wine', rand(2.2...76.9).round(2), 'drinks_course', 'wednesday'],
+  ['Juice', rand(2.2...76.9).round(2), 'drinks_course', 'wednesday'],
+
+
+  ['Chicken curry', rand(2.2...76.9).round(2), 'first_course', 'thursday'],
+  ['Spanish tortilla', rand(2.2...76.9).round(2), 'first_course', 'thursday'],
+
+  ['Mash-topped beef', rand(2.2...76.9).round(2), 'main_course', 'thursday'],
+  ['Guinness pie', rand(2.2...76.9).round(2), 'main_course', 'thursday'],
+
+  ['Hot chocolate', rand(2.2...76.9).round(2), 'drinks_course', 'thursday'],
+  ['Milk', rand(2.2...76.9).round(2), 'drinks_course', 'thursday'],
+
+
+  ['Courgette Carbonara', rand(2.2...76.9).round(2), 'first_course', 'friday'],
+  ['Bean Burgers', rand(2.2...76.9).round(2), 'first_course', 'friday'],
+
+  ['Chicken Soup', rand(2.2...76.9).round(2), 'main_course', 'friday'],
+  ['Roasted Salmon', rand(2.2...76.9).round(2), 'main_course', 'friday'],
+
+  ['Coffee', rand(2.2...76.9).round(2), 'drinks_course', 'friday'],
+  ['Black Tea', rand(2.2...76.9).round(2), 'drinks_course', 'friday']
 ]
 
 menu_list.each do |title, price, category, day|

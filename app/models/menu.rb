@@ -1,15 +1,21 @@
 # frozen_string_literal: true
 
 class Menu < ApplicationRecord
-  has_many :cart_items
+  enum category: {
+    first_course: FIRST_COURSE = 'first_course',
+    main_course: MAIN_COURSE = 'main_course',
+    drinks_course: DRINKS_COURSE = 'drinks_course'
+  }
 
-  enum category: %i[First Main Drinks]
-  enum day: %i[Monday Tuesday Wednesday Thursday Friday]
+  enum day: {
+    monday: MONDAY = 'monday',
+    tuesday: TUESDAY = 'tuesday',
+    wednesday: WEDNESDAY = 'wednesday',
+    thursday: THURSDAY = 'thursday',
+    friday: FRIDAY = 'friday'
+  }
 
   validates :title, presence: true
   validates :price, presence: true
-
-  def title_with_price
-    "#{title} $#{price.to_d}"
-  end
 end
+

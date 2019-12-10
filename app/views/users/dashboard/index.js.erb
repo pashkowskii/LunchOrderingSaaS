@@ -1,2 +1,2 @@
-$('#menu_form').replaceWith('<%= j render "menu", cart_items: @cart_items, menus: @menus %>');
+$('#menu_form').replaceWith('<%= j render "menu", dashboard: @dashboard_facade %>');
 $('.tabular.menu .item').tab();

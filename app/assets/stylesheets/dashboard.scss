@@ -1,4 +1,25 @@
-// Place all the styles related to the Dashboard controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import "semantic-ui";
+
+#menu-container {
+  zoom: 90%;
+}
+
+#day-tabs {
+  margin: 0 auto;
+}
+
+#course-tabs {
+  border: none;
+  padding: 0
+}
+
+#collection-radio-buttons {
+  margin: 0 10px 0 100px;
+  vertical-align: middle;
+}
+
+#label-for-radio-buttons {
+  font-size: 18px;
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+}

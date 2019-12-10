@@ -10,6 +10,7 @@ gem 'semantic-ui-rails'
 gem 'semantic-ui-sass', '~> 2.2', '>= 2.2.1.1'
 gem 'smart_init'
 gem 'bullet'
+gem 'draper'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'

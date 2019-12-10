@@ -10,38 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_154408) do
-
-  create_table "cart_items", force: :cascade do |t|
-    t.integer "menu_id"
-    t.string "itemable_type"
-    t.integer "itemable_id"
-    t.index ["itemable_type", "itemable_id"], name: "index_cart_items_on_itemable_type_and_itemable_id"
-    t.index ["menu_id"], name: "index_cart_items_on_menu_id"
-  end
-
-  create_table "carts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_carts_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2019_11_04_102253) do
 
   create_table "menus", force: :cascade do |t|
     t.string "title"
     t.float "price"
-    t.integer "category"
-    t.integer "day"
+    t.string "category"
+    t.string "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
     t.text "address"
+    t.decimal "total_price"
+    t.string "menu_titles"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.decimal "total_price"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,9 +42,9 @@ ActiveRecord::Schema.define(version: 2019_11_07_154408) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "name"
+    t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

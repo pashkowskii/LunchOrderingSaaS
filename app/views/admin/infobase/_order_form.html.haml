@@ -1,23 +1,24 @@
-%table.ui.very.basic.table
+%table.ui.very.basic.table{id: 'order-table'}
   %thead
     %tr
       %th User Name
       %th User Email
       %th Delivery Address
-      %th Order Items
+      %th.center.aligned Order Items
       %th Date of Order
-      %th Price of Order
+      %th.right.aligned Price of Order
+      %th
   %tbody
-  - orders.includes(:user).each do |order|
+  - orders.each do |order|
     %tr
-      %td #{order.user.name}
-      %td #{order.user.email}
+      %td #{order.user_name}
+      %td #{order.user_email}
       %td #{order.address}
+      %td #{order.menu_titles}
+      %td #{order.creation_date}
+      %td.right.aligned #{number_to_currency order.total_price}
       %td
-        - order.cart_items.includes(:menu).pluck(:title).each do |item|
-          %li
-            = item
-      %td #{order.updated_at.strftime('%Y-%m-%d %H:%M:%S')}
-      %td #{number_to_currency order.total_price}
-.ui.horizontal.divider{style: 'position: sticky; bottom: 0;'}
-  Total: #{number_to_currency orders.sum(:total_price)}
+        .ui.compact.positive.button{"data-position": "top right", "data-tooltip": "Complete"}
+          = link_to "✓", order_path(order), method: :delete
+.ui.horizontal.divider
+  Total: #{number_to_currency orders.amount_of_orders_per_day}

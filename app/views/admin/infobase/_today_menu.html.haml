@@ -1,53 +1,27 @@
 %div
   .ui.top.attached.tabular.menu
-    %a.item.active{"data-tab" => "first"} First Course
-    %a.item{"data-tab" => "main"} Main Course
-    %a.item{"data-tab" => "beverages"} Beverages
-  .ui.bottom.attached.tab.segment.active{"data-tab" => "first", style: 'height: 181px'}
-    %table.ui.very.basic.table
-      %thead
-        %tr
-          %th Title
-          %th.right.aligned
-            Price
-      %tbody
-        - @menus.send("#{Date.today.on_weekday? ? Date.today.strftime('%A') : 'Monday'}").First.each do |menu|
-          %tr
-            %td{"data-label" => "Title"}= menu.title
-            %td.right.aligned{"data-label" => "Price"}
-              = number_to_currency menu.price
-  .ui.bottom.attached.tab.segment{"data-tab" => "main", style: 'height: 181px'}
-    %table.ui.very.basic.table
-      %thead
-        %tr
-          %th Title
-          %th.right.aligned
-            Price
-      %tbody
-        - @menus.send("#{Date.today.on_weekday? ? Date.today.strftime('%A') : 'Monday'}").Main.each do |menu|
-          %tr
-            %td{"data-label" => "Title"}= menu.title
-            %td.right.aligned{"data-label" => "Price"}
-              = number_to_currency menu.price
-  .ui.bottom.attached.tab.segment{"data-tab" => "beverages", style: 'height: 181px'}
-    %table.ui.very.basic.table
-      %thead
-        %tr
-          %th Title
-          %th.right.aligned
-            Price
-      %tbody
-        - @menus.send("#{Date.today.on_weekday? ? Date.today.strftime('%A') : 'Monday'}").Drinks.each do |menu|
-          %tr
-            %td{"data-label" => "Title"}= menu.title
-            %td.right.aligned{"data-label" => "Price"}
-              = number_to_currency menu.price
+    %a.item.active{"data-tab": "first"} First Course
+    %a.item{"data-tab": "main"} Main Course
+    %a.item{"data-tab": "beverages"} Beverages
+
+  .ui.bottom.attached.tab.segment.active{"data-tab": "first", id: 'menu-tab-attached'}
+    = render 'menu_table', menu: infobase.first_course
+
+  .ui.bottom.attached.tab.segment{"data-tab": "main", id: 'menu-tab-attached'}
+    = render 'menu_table', menu: infobase.main_course
+
+  .ui.bottom.attached.tab.segment{"data-tab": "beverages", id: 'menu-tab-attached'}
+    = render 'menu_table', menu: infobase.drinks_course
+
 %br
-.ui.two.column.grid{style: 'padding-top: 13px'}
-  .column{style: 'border: none;'}
-    .ui.header{style: 'border: none; padding-top: 50px; font-size: 18px; font-weight: 700; height: 19px; line-height:19.999px; padding-bottom: 15px; padding-left: 200px'}
+
+.ui.two.column.grid{id: 'add-item-form'}
+  .column{id: 'add-item-form-first'}
+    .ui.header
       Add Item for Today
-    %p{style: 'padding-left: 200px'} Fill out the form below to add new item
-    = render 'menus/form', menu: @menu
+    %p Fill out the form below to add new item
+    = render 'menus/form', menu: infobase.new_menu
   .column
-    %img{:alt => "5dcd763ee6174", :src => "https://i.ibb.co/0pNx2RH/5dcd763ee6174.jpg", style: 'width: 400px; height: 400px; padding-left: 50px; padding-right: 0px'}
+    %img{alt: "5dcd763ee6174", src: "http://i.piccy.info/i9/c9baf6769ff15bd1f208b6a4c1cbc183/1574706763/27107/1349516/5dcd763ee6174_800.jpg"}
+
+

@@ -1,11 +1,11 @@
-.ui.centered.container.segment{style: 'height: 800px'}
+.ui.centered.container.segment{id: 'info-container'}
   .ui.green.ribbon.label
     %em "User is the word computer professionals use when they mean "idiot"." -
     Dave Barry
 
   .ui.secondary.menu
-    .ui.center.aligned.grid{:style => "margin: 0 auto;"}
-      = link_to 'Registered Users', admin_infobase_index_path(section: "users"), :class => "ui item", 'data-tab' => 'users'
-      = link_to "Menu for #{Date.today.on_weekday? ? Date.today.strftime('%A') : 'Monday'}", admin_infobase_index_path(section: "menu"), :class => "ui item", 'data-tab' => 'menu'
-      = link_to 'List of Orders', admin_infobase_index_path(section: "orders"), :class => "ui item", 'data-tab' => 'orders'
-  = render 'info'
+    .ui.center.aligned.grid{id: 'info-tabs'}
+      = link_to 'Registered Users', admin_infobase_index_path, class: 'ui item', 'data-tab': 'users'
+      = link_to "Menu for #{current_day_of_week.capitalize}", admin_infobase_index_path, class: 'ui item', 'data-tab': 'menu'
+      = link_to 'List of Orders', admin_infobase_index_path, class: 'ui item', 'data-tab': 'orders'
+  = render 'info', infobase: @infobase_facade
