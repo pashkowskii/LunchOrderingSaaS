@@ -1,0 +1,14 @@
+= form_for(menu, html:{class: 'ui form', id: 'new-menu-form'}) do |form|
+  .twelve.wide.field
+    = form.label :title
+    = form.text_field :title
+  .twelve.wide.field
+    = form.label :price
+    = form.text_field :price
+  .twelve.wide.field
+    = form.label :category
+    = select('menu', 'category', Menu.categories.keys.map { |category| [category.remove('_course').capitalize, category] } , class: "ui simple dropdown", prompt: 'Select Course')
+  .twelve.wide.field
+    = form.hidden_field :day, value: current_day_of_week
+  .action
+    = form.submit "Add Item", class: "ui positive button"

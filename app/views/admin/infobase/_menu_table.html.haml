@@ -1,0 +1,11 @@
+%table.ui.very.basic.table
+  %tbody
+    - menu.each do |item|
+      %tr
+        %td{"data-label": "Title"}
+          %strong
+            = item.title
+        %td.right.aligned{"data-label": "Price"}
+          %strong
+            = number_to_currency item.price
+          = link_to "✖", menu_path(item), method: :delete, class: "ui compact red button"

@@ -1,0 +1,29 @@
+- if cart_items.any?
+  .ui.compact.raised.segment{id: 'cart-container-position'}
+    .ui.attached.message
+      .header{id: 'cart-message'}
+        .h2
+          %i.shopping.cart.icon
+          Your Shopping Cart
+    .ui.form.attached.segment
+      %table.ui.very.basic.table
+        %tbody
+          - cart_items.each do |item|
+            %tr
+              %td.left.aligned
+                %strong
+                  %h4
+                    = item.title
+              %td.right.aligned{id: 'cart-item-price'}
+                %strong
+                  %h4
+                    = number_to_currency item.price
+              %td.right.aligned{id: 'cart-delete-button'}
+                = button_to "✖", cart_path(item), method: "delete", class: "ui compact red button"
+      .ui.two.fields
+        .twelve.wide.field{id: 'cart-total-field'}
+          %h4 Total: #{number_to_currency cart_items.total_price}
+        .eight.wide.field
+          = link_to "Proceed to checkout", new_order_path(total_price: cart_items.total_price, menu_titles: cart_items.menu_titles ), class: "ui positive button"
+- else
+  = render 'empty_cart'

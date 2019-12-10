@@ -1,0 +1,13 @@
+.ui.compact.raised.segment{:style => "margin: auto; top: 20%; min-width: 500px; padding: 10px"}
+  .ui.attached.message
+    .header{style: 'text-align: center'}
+      Enter Delivery Address
+  = form_for(@order, html:{class: 'ui form attached fluid segment'}) do |f|
+    .field
+      = f.label :address, style: 'visibility: hidden;'
+      = f.hidden_field :total_price, value: params[:total_price]
+      = f.hidden_field :menu_titles, value: params[:menu_titles]
+      = f.text_area :address, style: 'resize: none;'
+    .actions{:style => "text-align:center;"}
+      = f.submit "Confirm", class: "ui positive button"
+

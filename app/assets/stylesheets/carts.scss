@@ -1,0 +1,35 @@
+#empty-cart-container-position {
+  margin: auto;
+  top: 25%;
+  width: 20%;
+  padding: 10px;
+}
+
+#empty-cart-message {
+  text-align: center;
+}
+
+#cart-container-position {
+  margin: auto;
+  top: 20%;
+  min-width: 500px;
+  padding: 10px;
+}
+
+#cart-message {
+  text-align: center;
+}
+
+#cart-item-price {
+  padding-right: 0;
+}
+
+#cart-delete-button {
+  padding-left: 0px
+}
+
+#cart-total-field {
+  margin-top: 0.7em;
+  padding-left: 5px;
+  text-decoration: underline;
+}
