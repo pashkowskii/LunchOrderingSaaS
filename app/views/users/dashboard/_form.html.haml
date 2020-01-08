@@ -1,0 +1,10 @@
+= form_for(:cart, url:  carts_path, method: 'post') do |f|
+  %img.ui.fluid.rounded.image{src: 'https://realfood.tesco.com/media/images/RFO-1400x919-Smoked-kipper-pate-with-Melba-toast-2137b626-a677-4272-b710-c2cfa0e1413a-0-1400x919.jpg'}
+  %br
+    = collection_radio_buttons(:cart, :id, menus, :id, :title_with_price) do |b|
+      - b.label(id: 'label-for-radio-buttons') { b.radio_button(class: "option-input radio", id: 'collection-radio-buttons') + b.text }
+    - if dashboard.already_in_cart?(menus)
+      %h4.ui.bottom.right.attached.label
+        Already in Cart
+    - elsif dashboard.menu_for_today?(menus)
+      = f.submit "Add to cart", class: 'ui right floated positive button'

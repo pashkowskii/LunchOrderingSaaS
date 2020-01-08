@@ -1,0 +1,65 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title Lunchano
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'rails.validations'
+
+    %link{href: "https://fonts.googleapis.com/css?family=Oswald:400,500,600,700&display=swap", rel: "stylesheet"}
+    %link{href: "https://fonts.googleapis.com/css?family=Sofia&display=swap", rel: "stylesheet"}
+    %link{href: "https://fonts.googleapis.com/css?family=Solway&display=swap", rel: "stylesheet"}
+
+    %script{:src => "http://semantic-ui.com/javascript/library/jquery.min.js"}
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"}
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css", :rel => "stylesheet"}
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"}
+
+  %body
+    .ui.borderless.menu
+      - if user_signed_in?
+        .ui.item{id: 'logo'}
+          %p{id: 'logo-title'}
+            %i.ui.utensils.icon
+            Lunchano
+        .right.menu
+          .ui.simple.dropdown.item
+            %i.user.icon
+            - if current_user.admin?
+              Mr. Administrator
+            - else
+              = current_user.name
+            %i.dropdown.icon
+            .menu
+              .item
+                %i.edit.outline.icon
+                = link_to 'Edit Profile', edit_user_registration_path, method: :get, id: 'edit-button'
+          - if current_user.admin?
+            .item
+              .ui.action.compact.input
+                %input#myInput{type: "text", value: "#{current_user.api_token}"}
+                %button#tokenButton.ui.positive.right.labeled.icon.button
+                  %i.copy.icon
+                  Copy Access Token
+          - if !current_user.admin?
+            .item
+              %i.ui.shopping.cart.icon
+              = link_to 'Cart', carts_path, method: :get, id: 'cart-button'
+          .item
+            = button_to 'Sign out', destroy_user_session_path, class: "ui positive button", method: :delete
+      - else
+        .ui.item{id: 'logo'}
+          %p{id: 'logo-title'}
+            %i.ui.utensils.icon
+            Lunchano
+        .right.menu
+          .item
+            = button_to 'Log in', new_user_session_path, class: "ui positive button"
+          .item
+            = link_to 'Sign up', new_user_registration_path, class: "ui positive button"
+    = yield

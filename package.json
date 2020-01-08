@@ -1,0 +1,24 @@
+{
+  "name": "Lunchano",
+  "private": true,
+  "dependencies": {
+    "@client-side-validations/client-side-validations": "^0.1.0",
+    "@rails/actioncable": "^6.0.0-alpha",
+    "@rails/activestorage": "^6.0.0-alpha",
+    "@rails/ujs": "^6.0.1",
+    "@rails/webpacker": "^4.0.7",
+    "channels": "^0.0.4",
+    "jquery": "^3.4.1",
+    "node": "^12.13.0",
+    "semantic-ui-less": "^2.4.1",
+    "toastr": "^2.1.4",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "rails-ujs": "^5.2.3",
+    "semantic-ui-sass": "^2.4.2",
+    "webpack": "^4.41.2",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
