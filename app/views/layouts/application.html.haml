@@ -9,9 +9,11 @@
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'rails.validations'
 
     %link{href: "https://fonts.googleapis.com/css?family=Oswald:400,500,600,700&display=swap", rel: "stylesheet"}
     %link{href: "https://fonts.googleapis.com/css?family=Sofia&display=swap", rel: "stylesheet"}
+    %link{href: "https://fonts.googleapis.com/css?family=Solway&display=swap", rel: "stylesheet"}
 
     %script{:src => "http://semantic-ui.com/javascript/library/jquery.min.js"}
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"}
@@ -37,6 +39,13 @@
               .item
                 %i.edit.outline.icon
                 = link_to 'Edit Profile', edit_user_registration_path, method: :get, id: 'edit-button'
+          - if current_user.admin?
+            .item
+              .ui.action.compact.input
+                %input#myInput{type: "text", value: "#{current_user.api_token}"}
+                %button#tokenButton.ui.positive.right.labeled.icon.button
+                  %i.copy.icon
+                  Copy Access Token
           - if !current_user.admin?
             .item
               %i.ui.shopping.cart.icon

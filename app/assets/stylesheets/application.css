@@ -8,6 +8,16 @@ body {
     background: #ECE9E6 !important;
 }
 
+#myInput {
+    width: 180px;
+    padding-right: 0;
+    position: absolute;
+}
+
+#tokenButton {
+    border-radius: 5px;
+}
+
 #logo {
     color: #21ba45;
 }
@@ -28,7 +38,7 @@ body {
     color: black
 }
 
-*{font-family: 'Roboto', sans-serif;}
+*{font-family: 'Solway', serif;}
 
 @keyframes click-wave {
     0% {
@@ -100,6 +110,23 @@ body {
 }
 .option-input.radio::after {
     border-radius: 50%;
+}
+
+.field_with_errors .message {
+    color: red;
+    border-bottom-right-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    padding: 5px 5px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+div.field_with_errors div.ui-effects-wrapper {
+    display: inline-block !important;
+}
+
+.message:first-letter {
+    text-transform: uppercase;
 }
 
 

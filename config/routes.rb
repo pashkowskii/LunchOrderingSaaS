@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/new'
-
   devise_for :users, controllers: { registrations: 'registrations',
-                                              sessions: 'sessions' }
+                                    sessions: 'sessions',
+                                    omniauth_callbacks: 'users/omniauth_callbacks' }
 
   devise_scope :user do
     root to: 'sessions#new'
@@ -22,6 +19,12 @@ Rails.application.routes.draw do
 
   namespace :users do
     resources :dashboard
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :orders
+    end
   end
 end
 

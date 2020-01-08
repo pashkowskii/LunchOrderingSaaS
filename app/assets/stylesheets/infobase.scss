@@ -32,7 +32,6 @@
 }
 
 #menu-tab-attached strong {
-  font-family: Oswald, sans-serif;
   font-size: 16px;
 }
 
@@ -50,7 +49,7 @@
 
 #add-item-form-first .ui.header {
   border: none;
-  padding-top: 50px;
+  padding-top: 25px;
   font-size: 18px;
   font-weight: 700;
   height: 19px;
@@ -87,12 +86,6 @@
 
 #new-menu-form {
   padding-left: 200px;
-}
-
-#new-menu-form .twelve.wide.field {
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 19.999px;
 }
 
 #new-menu-form .action {

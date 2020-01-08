@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_102253) do
+ActiveRecord::Schema.define(version: 2020_01_08_121443) do
 
   create_table "menus", force: :cascade do |t|
     t.string "title"
@@ -25,7 +25,9 @@ ActiveRecord::Schema.define(version: 2019_11_04_102253) do
     t.integer "user_id"
     t.text "address"
     t.decimal "total_price"
-    t.string "menu_titles"
+    t.integer "salad_id"
+    t.integer "burger_id"
+    t.integer "beverage_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,6 +47,9 @@ ActiveRecord::Schema.define(version: 2019_11_04_102253) do
     t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "api_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

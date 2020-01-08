@@ -2,10 +2,9 @@
 
 class CartsController < ApplicationController
   before_action :initialize_session
-  decorates_assigned :cart_items
 
   def index
-    @cart_items = Menu.where(id: session[:cart])
+    @cart_facade = Cart::IndexFacade.new(session_cart: session[:cart])
   end
 
   def create

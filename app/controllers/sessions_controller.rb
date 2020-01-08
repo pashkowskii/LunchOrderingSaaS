@@ -1,21 +1,23 @@
 # frozen_string_literal: true
 
 class SessionsController < Devise::SessionsController
+  def create
+    super { TokenCreatorService.call(user: resource) if resource.persisted? }
+  end
+
+  def destroy
+    current_user.update(api_token: nil)
+    super
+  end
 
   private
 
   def after_sign_in_path_for(resource)
-    if resource.try(:admin?)
-      '/admin/infobase'
-    elsif resource.is_a?(User)
-      '/users/dashboard'
-    else
-      super
-    end
+    resource&.admin ? admin_infobase_index_path : users_dashboard_index_path
   end
 
   def after_sign_out_path_for(resource)
-    '/users/sign_in'
+    user_session_path
   end
 end
 

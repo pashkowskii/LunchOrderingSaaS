@@ -3,12 +3,19 @@
     .header
       Welcome to our site!
     %p Fill out the form below to log-in for your account
-  = form_for(resource, as: resource_name, html:{class: 'ui form attached fluid segment'}, url: session_path(resource_name)) do |f|
-    .field
+  = form_for(resource, as: resource_name, html:{class: 'ui form attached fluid segment', style: 'margin-bottom: 7px;'}, url: session_path(resource_name)) do |f|
+    .inline.fields
       = f.label :email
       = f.email_field :email, autofocus: true, autocomplete: "email"
-    .field
-      = f.label :password
-      = f.password_field :password, autocomplete: "current-password"
-    .actions{:style => "text-align:center;"}
-      = f.submit "Log in", class: "ui positive button"
+    .inline.fields
+      .field
+        = f.label :password
+        = f.password_field :password, autocomplete: "current-password"
+      .actions{:style => "text-align:center;"}
+        = f.submit "Log in", class: "ui positive button"
+  .ui.secondary.button
+    %i.ui.github.icon
+    = link_to 'Log in with GitHub', user_github_omniauth_authorize_path, style: 'color: white'
+  .ui.facebook.button
+    %i.ui.facebook.icon
+    = link_to 'Log in with Facebook', user_facebook_omniauth_authorize_path, style: 'color: white'

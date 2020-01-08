@@ -4,17 +4,21 @@
       %th User Name
       %th User Email
       %th Delivery Address
-      %th.center.aligned Order Items
+      %th Salad
+      %th Burger
+      %th Beverage
       %th Date of Order
       %th.right.aligned Price of Order
       %th
   %tbody
-  - orders.each do |order|
+  - orders.includes(:salads_menu, :burgers_menu, :beverages_menu, :customer).each do |order|
     %tr
-      %td #{order.user_name}
-      %td #{order.user_email}
+      %td #{order.customer_name}
+      %td #{order.customer_email}
       %td #{order.address}
-      %td #{order.menu_titles}
+      %td #{order.salads_menu_title}
+      %td #{order.burgers_menu_title}
+      %td #{order.beverages_menu_title}
       %td #{order.creation_date}
       %td.right.aligned #{number_to_currency order.total_price}
       %td

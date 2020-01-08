@@ -1,22 +1,15 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
-  def index
-    @orders = Order.all
-  end
-
-  def show
-    @order = Order.find(params[:id])
-  end
-
-  def new
-    @order = Order.new
-  end
-
   def create
-    @order = current_user.orders.new(order_params)
-    return if @order.save
+    order_service_result = OrderCreatorService.call(current_user: current_user,
+                                                    order_params: order_params,
+                                                    session_cart: session[:cart])
+    return unless order_service_result.success?
 
     session[:cart] = nil
     redirect_to users_dashboard_index_path
+
   end
 
   def destroy
@@ -28,7 +21,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:address, :total_price, :menu_titles)
+    params.require(:order).permit(:address)
   end
 end
 

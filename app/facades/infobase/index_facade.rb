@@ -4,11 +4,11 @@ module Infobase
   class IndexFacade
     DEFAULT_DAY = 'monday'
     WEEKDAYS = %w[monday tuesday wednesday thursday friday].freeze
-    COURSES = %w[first_course main_course drinks_course].freeze
+    COURSES = %w[salad burger beverage].freeze
 
-    # def first_course
-    # def main_course
-    # def drinks_course
+    # def salad
+    # def burger
+    # def beverage
 
     COURSES.each do |name_of_course|
       define_method(name_of_course.to_s) do

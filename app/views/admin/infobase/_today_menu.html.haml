@@ -1,17 +1,17 @@
 %div
   .ui.top.attached.tabular.menu
-    %a.item.active{"data-tab": "first"} First Course
-    %a.item{"data-tab": "main"} Main Course
+    %a.item.active{"data-tab": "first"} Salads
+    %a.item{"data-tab": "main"} Burgers
     %a.item{"data-tab": "beverages"} Beverages
 
   .ui.bottom.attached.tab.segment.active{"data-tab": "first", id: 'menu-tab-attached'}
-    = render 'menu_table', menu: infobase.first_course
+    = render 'menu_table', menu: infobase.salad
 
   .ui.bottom.attached.tab.segment{"data-tab": "main", id: 'menu-tab-attached'}
-    = render 'menu_table', menu: infobase.main_course
+    = render 'menu_table', menu: infobase.burger
 
   .ui.bottom.attached.tab.segment{"data-tab": "beverages", id: 'menu-tab-attached'}
-    = render 'menu_table', menu: infobase.drinks_course
+    = render 'menu_table', menu: infobase.beverage
 
 %br
 

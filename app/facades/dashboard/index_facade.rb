@@ -3,16 +3,16 @@
 module Dashboard
   class IndexFacade
     DEFAULT_DAY = 'monday'
-    COURSES = %w[first_course main_course drinks_course].freeze
+    COURSES = %w[salad burger beverage].freeze
 
     def initialize(day:, session_cart:)
       @day = day
       @session_cart = session_cart
     end
 
-    # def first_course
-    # def main_course
-    # def drinks_course
+    # def salad
+    # def burger
+    # def beverage
 
     COURSES.each do |name_of_course|
       define_method(name_of_course.to_s) do

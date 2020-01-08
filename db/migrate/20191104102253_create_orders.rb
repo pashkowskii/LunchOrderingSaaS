@@ -4,7 +4,9 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.integer :user_id
       t.text :address
       t.decimal :total_price
-      t.string :menu_titles
+      t.integer :salad_id
+      t.integer :burger_id
+      t.integer :beverage_id
 
       t.timestamps
     end
