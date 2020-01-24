@@ -1,0 +1,11 @@
+%div#replace-conversation
+  %div{data: { conversation: { id: "#{conversation.id}" } } }
+    .messages-list
+      %ul#messages-ul
+        = render 'conversations/conversation_content', messages: conversation.messages.includes(:user), user: user
+    %form.new_message
+      %input{name: "conversation_id", type: "hidden", value: "#{conversation.id}"}
+      %input{name: "user_id", type: "hidden", value: "#{user.id}"}
+      .ui.action.input#chat-input
+        %input.ui.fluid#message-input{name: "body"}
+        %button.ui.positive.button#send-button{type: "submit"} Send

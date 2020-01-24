@@ -1,0 +1,98 @@
+@import "semantic-ui";
+
+#info-container {
+  min-width: 1100px;
+  margin: 45px;
+  height: 800px;
+}
+
+#info-tabs {
+  margin: 0 auto;
+}
+
+#users-tab-segment {
+  padding-right: 0 !important;
+  height: 675px;
+  overflow: auto
+}
+
+#menu-tab-segment {
+  border: transparent;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+#orders-tab-segment {
+  border: transparent;
+  border-bottom: none;
+  padding: 0;
+}
+
+#menu-tab-attached {
+  height: 180px;
+}
+
+#menu-tab-attached strong {
+  font-size: 16px;
+}
+
+#menu-tab-attached .ui.compact.button {
+ margin-left: 40px;
+}
+
+#add-item-form {
+  padding-top: 13px;
+}
+
+#add-item-form-first {
+  border: none;
+}
+
+#add-item-form-first .ui.header {
+  border: none;
+  padding-top: 25px;
+  font-size: 18px;
+  font-weight: 700;
+  height: 19px;
+  line-height:19.999px;
+  padding-bottom: 15px;
+  padding-left: 200px;
+}
+
+#add-item-form-first p {
+  padding-left: 200px;
+}
+
+#add-item-form img {
+  min-width: 400px;
+  min-height: 400px;
+  width: 400px;
+  height: 400px;
+  padding-left: 50px;
+  padding-right: 0;
+}
+
+#order-tab-attached {
+  height: 630px;
+  overflow: auto;
+}
+
+#order-table a {
+  color: white;
+  font-size: 17px;
+}
+
+#order-table .ui.horizontal.divider {
+  position: sticky;
+  bottom: 0;
+}
+
+#new-menu-form {
+  padding-left: 200px;
+}
+
+#new-menu-form .action {
+  text-align: center;
+  padding-right: 80px;
+  padding-top: 10px;
+}

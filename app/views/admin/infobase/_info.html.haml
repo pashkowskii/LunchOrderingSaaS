@@ -1,0 +1,6 @@
+.ui.tab#users-tab-segment{data: { tab: 'users' }}
+  = render 'registered_users', infobase: infobase
+.ui.active.tab.segment#menu-tab-segment{data: { tab: 'menu' }}
+  = render 'today_menu', infobase: infobase
+.ui.tab.segment#orders-tab-segment{data: { tab: 'orders' }}
+  = render 'orders', infobase: infobase

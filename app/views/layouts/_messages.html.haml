@@ -1,0 +1,5 @@
+- flash.each do | message_type, message_content |
+  - flash.delete(:timedout)
+  #flashMessage{:class => "ui #{flash_class(message_type)} floating message transition"}
+    #messageText.header
+      = message_content

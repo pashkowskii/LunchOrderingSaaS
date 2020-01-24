@@ -1,0 +1,13 @@
+%div{id: 'menu_form'}
+  .ui.tab.compact.borderless.segment{"data-tab": "Day", id: 'course-tabs'}
+    .ui.top.attached.tabular.menu
+      %a.active.item{"data-tab": "Day/First"} Salads
+      %a.item{"data-tab": "Day/Main"} Burgers
+      %a.item{"data-tab": "Day/Beverages"} Beverages
+
+    .ui.bottom.attached.active.tab.segment{"data-tab": "Day/First"}
+      = render  'form', dashboard: dashboard, menus: dashboard.salad
+    .ui.bottom.attached.tab.segment{"data-tab": "Day/Main"}
+      = render  'form', dashboard: dashboard, menus: dashboard.burger
+    .ui.bottom.attached.tab.segment{"data-tab": "Day/Beverages"}
+      = render  'form', dashboard: dashboard, menus: dashboard.beverage

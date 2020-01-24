@@ -1,0 +1,22 @@
+- menu = %w(salad burger beverage)
+%div
+  .ui.top.attached.tabular.menu
+    - menu.each do |category|
+      %a.item{ data: { tab: category } }
+        = category.capitalize
+        
+  - menu.each do |category|
+    .ui.bottom.attached.tab.segment#menu-tab-attached{ data: { tab: category } }
+      = render 'menu_table', menu: infobase.menu_for(category)
+
+%br
+.ui.two.column.grid#add-item-form
+  .column#add-item-form-first
+    .ui.header
+      Add Item for Today
+    %p Fill out the form below to add new item
+    = render 'menus/form', menu: infobase.new_menu
+  .column
+    %img{src: "http://i.piccy.info/i9/c9baf6769ff15bd1f208b6a4c1cbc183/1574706763/27107/1349516/5dcd763ee6174_800.jpg"}
+
+

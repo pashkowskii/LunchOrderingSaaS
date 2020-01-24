@@ -1,0 +1,53 @@
+#empty-cart-container-position {
+  margin: auto;
+  top: 25%;
+  width: 20%;
+  padding: 10px;
+}
+
+#cart-confirm-field {
+  text-align: right;
+}
+
+#cart-address-field-label {
+  visibility: hidden;
+}
+
+#cart-address-field-text-area {
+  resize: none;
+}
+
+#empty-cart-message {
+  text-align: center;
+  text-decoration: none;
+}
+
+#cart-container-position {
+  margin: auto;
+  top: 10%;
+  min-width: 500px;
+  padding: 10px;
+}
+
+#cart-message {
+  text-align: center;
+}
+
+#cart-item-price {
+  padding-right: 0;
+}
+
+#cart-delete-button {
+  padding-left: 10px;
+  width: 30px;
+}
+
+#cart-total-field {
+  margin-top: 0.7em;
+  padding-left: 5px;
+  text-decoration: underline;
+}
+
+h4 {
+  font-family: 'Solway', serif !important;
+}

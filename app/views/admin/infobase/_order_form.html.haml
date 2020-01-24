@@ -1,0 +1,36 @@
+%table.ui.very.basic.table#order-table
+  %thead
+    %tr
+      %th User Name
+      %th User Email
+      %th Delivery Address
+      %th Salad
+      %th Burger
+      %th Beverage
+      %th Date of Order
+      %th.right.aligned Price of Order
+      %th
+  %tbody
+  - orders.includes(:salads_menu, :burgers_menu, :beverages_menu, :customer).each do |order|
+    %tr
+      %td
+        = order.customer_name
+      %td
+        = order.customer_email
+      %td
+        = order.address
+      %td
+        = order.salads_menu_title
+      %td
+        = order.burgers_menu_title
+      %td
+        = order.beverages_menu_title
+      %td
+        = tag.time l(order.created_at, format: :short)
+      %td.right.aligned
+        = number_to_currency order.total_price
+      %td
+        .ui.compact.positive.button{ data: { position: 'top right', tooltip: 'Complete' } }
+          = link_to "✓", order_path(order), method: :delete
+.ui.horizontal.divider
+  Total: #{number_to_currency orders.amount_of_orders_per_day}

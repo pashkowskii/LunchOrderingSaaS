@@ -1,0 +1,10 @@
+uk:
+  global:
+    menu:
+      edit_profile: "Редагувати"
+      token: "Скопіювати токен"
+      cart: "Корзина"
+      contact: "Підтримка"
+      sign_out: "Вихід"
+      log_in: "Вхід"
+      sign_up: "Реєстрація"

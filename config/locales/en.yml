@@ -1,0 +1,10 @@
+en:
+  global:
+    menu:
+      edit_profile: "Edit Profile"
+      token: "Copy Access Token"
+      cart: "Cart"
+      contact: "Help & Contact"
+      sign_out: "Sign out"
+      log_in: "Log in"
+      sign_up: "Sign up"

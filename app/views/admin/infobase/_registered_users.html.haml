@@ -1,0 +1,31 @@
+.ui.bottom.attached.segment.pushable
+  .ui.visible.left.vertical.sidebar.menu
+    .ui.category.search.item
+      .ui.transparent.icon.input
+        %input.prompt{placeholder: "Search user...", type: "text"}
+        %i.search.link.icon
+      .results
+    - infobase.users.each do |interlocutor|
+      .ui.item#user-recipient
+        .ui.comments
+          .comment
+            - if interlocutor.online
+              %img{src: "https://img.icons8.com/color/48/000000/greentech.png", id: "#{interlocutor.id}-status", class: "active", style: 'width: 23px; height: 23px; position:absolute; left: 25px; top: 25px'}
+            - else
+              %img{src: "https://img.icons8.com/color/48/000000/greentech.png", id: "#{interlocutor.id}-status", class: "inactive", style: 'width: 23px; height: 23px; position:absolute; left: 25px; top: 25px'}
+            %a.avatar
+              %img.user-picture{src: ""}
+            .content
+              %a.author
+                = link_to interlocutor.name, conversation_path(interlocutor.id), remote: true, method: :get
+              .metadata
+                .date
+                  = interlocutor.email
+              .text
+                Click on name to start ...
+  .ui.pusher
+    %div#replace-conversation
+      %h2.ui.center.aligned.icon.header#chat-header
+        %i.circular.users.icon
+        Choose User to Start Conversation
+

@@ -1,0 +1,14 @@
+= form_for(menu, html:{class: 'ui form', id: 'new-menu-form'}, validate: true) do |form|
+  .twelve.wide.field
+    = form.label :title
+    = form.text_field :title
+  .twelve.wide.field
+    = form.label :price
+    = form.text_field :price
+  .twelve.wide.field
+    = form.label :category
+    = select('menu', 'category', courses_for_select , {required: true}, class: "ui floating labeled icon dropdown")
+  .twelve.wide.field
+    = form.hidden_field :day, value: current_day_of_week
+  .action
+    = form.submit "Add Item", class: "ui positive button"
