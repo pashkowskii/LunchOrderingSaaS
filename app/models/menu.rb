@@ -20,13 +20,13 @@ class Menu < ApplicationRecord
   }
 
 
-  # validates :title, presence: true, format: { with: /\A[a-zA-Z]+\z/ },
-  #                  length: { minimum: 2, maximum: 20 }
-  # validates :price, presence: true, format: { with: /\A\d+(?:\.\d{2})?\z/ },
-  #                  numericality: { greater_than: 0, less_than: 1_000_000 }
-  # validates :category, inclusion: { in: %w[salad burger beverage] },
-  #                     presence: true
-  # validates :day, inclusion: { in: %w[monday tuesday wednesday thursday friday] },
-  #                presence: true
+  validates :title, presence: true, format: { with: /\A[a-zA-Z]+\z/ },
+                    length: { minimum: 2, maximum: 20 }
+  validates :price, presence: true, format: { with: /\A\d+(?:\.\d{2})?\z/ },
+                    numericality: { greater_than: 0, less_than: 1_000_000 }
+  validates :category, inclusion: { in: %w[salad burger beverage] },
+                       presence: true
+  validates :day, inclusion: { in: %w[monday tuesday wednesday thursday friday] },
+                  presence: true
 end
 
