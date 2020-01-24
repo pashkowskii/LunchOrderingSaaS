@@ -9,9 +9,14 @@ class ProductLifeCycleTest < ApplicationSystemTestCase
     visit admin_infobase_index_url
 
     # Administrator Add New Product
-    fill_in 'Title', with: 'Asian salmon'
+    fill_in 'Title', with: 'Salmon'
     fill_in 'Price', with: '63.72'
     click_on 'Add Item'
+
+    # Administrator Check New Product
+    assert_selector 'td', text: 'Salmon'
+    assert_selector 'td', text: '$63.72'
+
     # Administrator Sign out
     click_on 'Sign out'
 
@@ -20,17 +25,19 @@ class ProductLifeCycleTest < ApplicationSystemTestCase
     visit users_dashboard_index_url
 
     # User choose product and add to Cart
-    choose('Asian salmon $63.72')
+    choose('Salmon $63.72')
     click_on 'Add to cart'
     assert_selector 'h4', text: 'Already in Cart'
 
     # User go to Cart check and proceed to checkout his Order
     click_on 'Cart'
-    assert_selector 'h4', text: 'Asian salmon'
+    assert_selector 'h4', text: 'Salmon'
     assert_selector 'h4', text: 'Total: $63.72'
+
     # User enter delivery address
     fill_in 'order_address', with: 'Lviv, Zelena 57A'
-    click_on 'Proceed to checkout'
+    click_on 'Confirm'
+
     # User Sign out
     click_on 'Sign out'
 
@@ -43,6 +50,9 @@ class ProductLifeCycleTest < ApplicationSystemTestCase
     page.find(:xpath, "//*[text()='#{Date.today.on_weekday? ? Date.today.strftime('%A') : 'Monday'}']").click
 
     # Administrator check User`s Order
-    assert_selector 'td', text: 'Asian salmon'
+    assert_selector 'td', text: 'Salmon'
+    assert_selector 'td', text: '$63.72'
+    assert_selector 'td', text: 'Lviv, Zelena 57A'
+    assert_selector 'div', text: 'TOTAL: $63.72'
   end
 end

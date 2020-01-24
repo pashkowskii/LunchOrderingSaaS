@@ -9,22 +9,29 @@
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = javascript_include_tag 'rails.validations'
+
+    %script{:src => "https://code.jquery.com/jquery-1.12.4.js"}
+    %script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.js"}
 
     %link{href: "https://fonts.googleapis.com/css?family=Oswald:400,500,600,700&display=swap", rel: "stylesheet"}
     %link{href: "https://fonts.googleapis.com/css?family=Sofia&display=swap", rel: "stylesheet"}
     %link{href: "https://fonts.googleapis.com/css?family=Solway&display=swap", rel: "stylesheet"}
 
+    %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css", :rel => "stylesheet"}
+
     %script{:src => "http://semantic-ui.com/javascript/library/jquery.min.js"}
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"}
     %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css", :rel => "stylesheet"}
     %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"}
-
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"}
   %body
     .ui.borderless.menu
       - if user_signed_in?
-        .ui.item{id: 'logo'}
-          %p{id: 'logo-title'}
+        .ui.item#logo
+          %p#logo-title
             %i.ui.utensils.icon
             Lunchano
         .right.menu
@@ -38,28 +45,51 @@
             .menu
               .item
                 %i.edit.outline.icon
-                = link_to 'Edit Profile', edit_user_registration_path, method: :get, id: 'edit-button'
+                = link_to t('global.menu.edit_profile'), edit_user_registration_path, method: :get, id: 'edit-button'
           - if current_user.admin?
             .item
               .ui.action.compact.input
                 %input#myInput{type: "text", value: "#{current_user.api_token}"}
                 %button#tokenButton.ui.positive.right.labeled.icon.button
                   %i.copy.icon
-                  Copy Access Token
+                  = t('global.menu.token')
           - if !current_user.admin?
             .item
               %i.ui.shopping.cart.icon
-              = link_to 'Cart', carts_path, method: :get, id: 'cart-button'
+              = link_to t('global.menu.cart'), carts_path, method: :get, id: 'cart-button'
+            .item
+              .ui.vertical.animated.green.inverted.button#chat-btn{tabindex: "0"}
+                .hidden.content
+                  %i.wechat.icon
+                .visible.content
+                  = t('global.menu.contact')
           .item
-            = button_to 'Sign out', destroy_user_session_path, class: "ui positive button", method: :delete
+            .ui.buttons
+              = link_to 'Eng', root_path(locale: :en), class: 'ui button'
+              .or
+              = link_to 'Ukr', root_path(locale: :uk), class: 'ui positive button'
+          .item
+            = button_to t('global.menu.sign_out'), destroy_user_session_path, class: "ui positive button", method: :delete
       - else
-        .ui.item{id: 'logo'}
-          %p{id: 'logo-title'}
+        .ui.item#logo
+          %p#logo-title
             %i.ui.utensils.icon
             Lunchano
         .right.menu
           .item
-            = button_to 'Log in', new_user_session_path, class: "ui positive button"
+            .ui.buttons
+              = link_to 'Eng', root_path(locale: :en), class: 'ui button'
+              .or
+              = link_to 'Ukr', root_path(locale: :uk), class: 'ui positive button'
           .item
-            = link_to 'Sign up', new_user_registration_path, class: "ui positive button"
+            = button_to t('global.menu.log_in'), new_user_session_path, class: "ui positive button"
+          .item
+            = link_to t('global.menu.sign_up'), new_user_registration_path, class: "ui positive button"
+    .ui.container
+      = render 'layouts/messages'
     = yield
+
+
+
+
+

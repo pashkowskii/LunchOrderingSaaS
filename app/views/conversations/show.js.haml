@@ -1,0 +1,2 @@
+$('#replace-conversation').replaceWith('#{j render 'conversations/conversation', conversation: @conversation, user: current_user}');
+$(".messages-list").scrollTop($('#replace-conversation').find('.messages-list')[0].scrollHeight);

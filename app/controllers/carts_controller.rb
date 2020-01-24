@@ -8,13 +8,18 @@ class CartsController < ApplicationController
   end
 
   def create
-    AddToCartService.call(menu_id: params['cart']['id'].to_i,
-                          session_cart: session[:cart])
-    redirect_to users_dashboard_index_path
+    if AddToCart.call(params: params,
+                      session_cart: session[:cart])
+      redirect_to users_dashboard_index_path
+      flash[:success] = 'Successfully Added To Cart'
+    else
+      redirect_to users_dashboard_index_path
+      flash[:error] = 'Choose Your Meal First!'
+    end
   end
 
   def destroy
-    session[:cart].delete(params['id'].to_i)
+    session[:cart].delete(params[:id].to_i)
     redirect_to carts_path
   end
 

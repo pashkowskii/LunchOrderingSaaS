@@ -1,6 +1,6 @@
-.ui.tab.segment{"data-tab": "users", id: 'users-tab-segment'}
+.ui.tab#users-tab-segment{data: { tab: 'users' }}
   = render 'registered_users', infobase: infobase
-.ui.active.tab.segment{"data-tab": "menu", id: 'menu-tab-segment'}
+.ui.active.tab.segment#menu-tab-segment{data: { tab: 'menu' }}
   = render 'today_menu', infobase: infobase
-.ui.tab.segment{"data-tab": "orders", id: 'orders-tab-segment'}
+.ui.tab.segment#orders-tab-segment{data: { tab: 'orders' }}
   = render 'orders', infobase: infobase

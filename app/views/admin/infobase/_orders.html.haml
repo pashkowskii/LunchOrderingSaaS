@@ -1,17 +1,9 @@
+- weekdays = %w(monday tuesday wednesday thursday friday)
 .ui.top.attached.tabular.menu
-  %a.item{"data-tab": "Monday"} Monday
-  %a.item{"data-tab": "Tuesday"} Tuesday
-  %a.item{"data-tab": "Wednesday"} Wednesday
-  %a.item{"data-tab": "Thursday"} Thursday
-  %a.item{"data-tab": "Friday"} Friday
+  - weekdays.each do |day|
+    %a.item{ data: { tab: day } }
+      = day.capitalize
 
-.ui.bottom.attached.tab.segment{"data-tab": "Monday", id: 'order-tab-attached'}
-  = render 'order_form',infobase: infobase, orders: infobase.orders_for_monday
-.ui.bottom.attached.tab.segment{"data-tab": "Tuesday", id: 'order-tab-attached'}
-  = render 'order_form',infobase: infobase, orders: infobase.orders_for_tuesday
-.ui.bottom.attached.tab.segment{"data-tab": "Wednesday", id: 'order-tab-attached'}
-  = render 'order_form',infobase: infobase, orders: infobase.orders_for_wednesday
-.ui.bottom.attached.tab.segment{"data-tab": "Thursday", id: 'order-tab-attached'}
-  = render 'order_form',infobase: infobase, orders: infobase.orders_for_thursday
-.ui.bottom.attached.tab.segment{"data-tab": "Friday", id: 'order-tab-attached'}
-  = render 'order_form',infobase: infobase, orders: infobase.orders_for_friday
+- weekdays.each do |day|
+  .ui.bottom.attached.tab.segment#order-tab-attached{ data: { tab: day } }
+    = render 'order_form',infobase: infobase, orders: infobase.orders_for(day)

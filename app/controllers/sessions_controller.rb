@@ -2,7 +2,7 @@
 
 class SessionsController < Devise::SessionsController
   def create
-    super { TokenCreatorService.call(user: resource) if resource.persisted? }
+    super { TokenCreator.call(user: resource) if resource.persisted? }
   end
 
   def destroy

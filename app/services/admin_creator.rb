@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdminCreatorService < ApplicationService
+class AdminCreator < ApplicationService
   initialize_with :user
 
   def call
@@ -10,7 +10,7 @@ class AdminCreatorService < ApplicationService
   private
 
   def user_first?
-    User.limit(2).count == 1
+    User.second.blank?
   end
 end
 

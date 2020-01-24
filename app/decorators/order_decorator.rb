@@ -10,10 +10,6 @@ class OrderDecorator < ApplicationDecorator
   def self.collection_decorator_class
     OrdersAmountDecorator
   end
-
-  def creation_date
-    created_at.strftime('%Y-%m-%d %H:%M:%S').to_s
-  end
 end
 
 

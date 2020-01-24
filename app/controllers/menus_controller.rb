@@ -4,6 +4,7 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     redirect_to admin_infobase_index_path if @menu.save
+    flash[:success] = "#{@menu.title} Successfully Added"
   end
 
   def destroy

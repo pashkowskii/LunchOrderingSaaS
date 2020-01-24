@@ -5,13 +5,26 @@
   padding: 10px;
 }
 
+#cart-confirm-field {
+  text-align: right;
+}
+
+#cart-address-field-label {
+  visibility: hidden;
+}
+
+#cart-address-field-text-area {
+  resize: none;
+}
+
 #empty-cart-message {
   text-align: center;
+  text-decoration: none;
 }
 
 #cart-container-position {
   margin: auto;
-  top: 20%;
+  top: 10%;
   min-width: 500px;
   padding: 10px;
 }

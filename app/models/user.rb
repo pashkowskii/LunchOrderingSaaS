@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  NAME_REGEX = /\w+/.freeze
+
+  after_update_commit { AppearanceBroadcastJob.perform_later self }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github facebook]

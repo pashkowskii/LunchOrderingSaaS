@@ -2,7 +2,7 @@
 
 class RegistrationsController < Devise::RegistrationsController
   def create
-    super { AdminCreatorService.call(user: resource) && TokenCreatorService.call(user: resource) if resource.persisted? }
+    super { AdminCreator.call(user: resource) && TokenCreator.call(user: resource) if resource.persisted? }
   end
 
   private

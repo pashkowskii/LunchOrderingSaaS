@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class OrderCreatorService < ApplicationService
+class OrderCreator < ApplicationService
   initialize_with :current_user, :order_params, :session_cart
 
   COURSES = %w[salad burger beverage].freeze

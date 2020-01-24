@@ -4,8 +4,210 @@
  */
 @import "semantic-ui";
 
-body {
-    background: #ECE9E6 !important;
+#chat-header {
+    position: absolute;
+    left: 22%;
+    top: 35%;
+}
+
+.ui.bottom.attached.segment.pushable {
+    border: none !important;
+    background: none;
+}
+
+.ui.visible.left.vertical.sidebar.menu {
+    width: 270px;
+}
+
+.user-status {
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+}
+
+.active {
+    display: block;
+}
+.inactive { display: none; }
+
+
+#start-conv-button {
+    position: absolute;
+    left: 27%;
+    top: 47%;
+}
+
+#chat-input {
+    width: 812px;
+}
+
+#send-button {
+    border-radius: 3px !important;
+}
+
+#messages-ul {
+    list-style-type: none;
+    padding-inline-start: 0 !important;
+}
+
+#question-room {
+    position: absolute;
+    max-width: 355px !important;
+    min-width: 355px !important;
+    height: 500px;
+    width: 355px;
+    top: 64px;
+    right: 16px;
+    display:none;
+    z-index: 2;
+}
+
+#question-room:after, #question-room:before {
+    bottom: 100%;
+    left: 43%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+#question-room:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: white;
+    border-width: 15px;
+    margin-left: -15px;
+}
+#question-room:before {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(34, 36, 38, 0.15);
+    border-width: 16px;
+    margin-left: -16px;
+}
+
+
+#question-room .messages-list {
+    height: 430px;
+    overflow-y: scroll;
+}
+
+.ui.visible.left.vertical.sidebar.menu {
+    overflow-y: scroll;
+}
+
+.ui.visible.left.vertical.sidebar.menu::-webkit-scrollbar {
+    display: none;
+}
+
+#question-room .messages-list::-webkit-scrollbar {
+    display: none;
+}
+
+#question-room #chat-input {
+    width: 325px !important;
+}
+
+#question-room #replace-conversation {
+    padding-left: 0;
+}
+
+#question-room .message-sent {
+    left: 174px;
+}
+
+.ui.bottom.attached.segment.pushable {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+div #replace-conversation {
+    padding-left: 24px;
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.messages-list {
+    height: 633px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.message-sent {
+    padding: 10px 10px 10px 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    width: 50%;
+    overflow: hidden;
+    position: relative;
+    left: 293px;
+}
+
+.message-sent div .content {
+    background: #e0e1e2 none;
+    width:fit-content;
+    height:fit-content;
+    text-align: right;
+    position: relative;
+    float: right;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    word-break: break-all;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.message-received div .content {
+    background: #21ba45;
+    width:fit-content;
+    height:fit-content;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    word-break: break-all;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.message-received {
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+    width: 50%;
+    overflow: hidden;
+    display: inline-block;
+    text-align: left;
+}
+
+html body {
+    background-image: url("http://igniteindy.org/wp-content/uploads/2018/01/food-background-light.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.swal-button {
+    background-color: #21ba45 !important;
+}
+
+#flashMessage {
+    position: absolute;
+    top: 90px;
+    right: 16px;
+    padding: 20px 20px 20px 20px;
+    transition-delay: 5s;
+    background-color: #21ba45 !important;
+    color: white !important;
+    box-shadow: 10px 10px 5px grey;
+    z-index: 2;
+}
+
+#messageText {
+    color: white;
+    font-family: 'Solway', serif !important;
 }
 
 #myInput {

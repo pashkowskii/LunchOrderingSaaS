@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TokenCreatorService < ApplicationService
+class TokenCreator < ApplicationService
   initialize_with :user
 
   def call

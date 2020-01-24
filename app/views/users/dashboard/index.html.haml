@@ -1,14 +1,15 @@
-.ui.centered.container.segment{id: 'menu-container'}
+.ui.container.segment#question-room
+  .ui.pusher
+    %div#replace-conversation
+      = link_to 'Start Conversation', conversation_path(@user.id), remote: true, method: :get, class: 'ui positive button', id: 'start-conv-button'
 
+.ui.centered.container.segment#menu-container
   .ui.green.ribbon.label
     %em “Ask not what you can do for your country. Ask what’s for lunch.” - Orson Welles
-
   .ui.secondary.menu
-    .ui.center.aligned.grid{id: 'day-tabs'}
-      = link_to 'Monday', users_dashboard_index_path(day: "monday"), class: 'ui item', 'data-tab': '1', remote: true
-      = link_to 'Tuesday', users_dashboard_index_path(day: "tuesday"), class: 'ui item', 'data-tab': '2', remote: true
-      = link_to 'Wednesday', users_dashboard_index_path(day: "wednesday"), class: 'ui item', 'data-tab': '3', remote: true
-      = link_to 'Thursday', users_dashboard_index_path(day: "thursday"), class: 'ui item', 'data-tab': '4', remote: true
-      = link_to 'Friday', users_dashboard_index_path(day: "friday"), class: 'ui item', 'data-tab': '5', remote: true
+    .ui.center.aligned.grid#day-tabs
+      - weekdays = %w(monday tuesday wednesday thursday friday)
+      - weekdays.each do |day|
+        = link_to day.capitalize, users_dashboard_index_path(day: day), class: 'ui item', data: { tab: weekdays.index(day) + 1}, remote: true
 
   = render 'menu', dashboard: @dashboard_facade

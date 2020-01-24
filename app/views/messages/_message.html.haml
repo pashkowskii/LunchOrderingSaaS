@@ -1,0 +1,13 @@
+%li
+  .ui.grid
+    %div.compact.message{:class => "#{user.id == message.user_id ? 'message-sent' : 'message-received'}"}
+      .ui.comments
+        .comment
+          .content
+            %a.author
+              = message.user.name
+            .metadata
+              %span.date
+                = tag.time l(message.updated_at, format: :short)
+            .text
+              = message.body

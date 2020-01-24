@@ -5,6 +5,8 @@ module Dashboard
     DEFAULT_DAY = 'monday'
     COURSES = %w[salad burger beverage].freeze
 
+    attr_reader :day
+
     def initialize(day:, session_cart:)
       @day = day
       @session_cart = session_cart
@@ -41,7 +43,7 @@ module Dashboard
     end
 
     def target_day
-      @day.blank? ? current_day_of_week : @day
+      day.blank? ? current_day_of_week : day
     end
   end
 end

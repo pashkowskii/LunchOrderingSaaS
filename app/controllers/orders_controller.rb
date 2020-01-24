@@ -2,14 +2,14 @@
 
 class OrdersController < ApplicationController
   def create
-    order_service_result = OrderCreatorService.call(current_user: current_user,
-                                                    order_params: order_params,
-                                                    session_cart: session[:cart])
+    order_service_result = OrderCreator.call(current_user: current_user,
+                                             order_params: order_params,
+                                             session_cart: session[:cart])
     return unless order_service_result.success?
 
     session[:cart] = nil
     redirect_to users_dashboard_index_path
-
+    flash[:success] = 'Thank You For Your Order!'
   end
 
   def destroy

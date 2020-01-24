@@ -4,39 +4,24 @@ module Infobase
   class IndexFacade
     DEFAULT_DAY = 'monday'
     WEEKDAYS = %w[monday tuesday wednesday thursday friday].freeze
-    COURSES = %w[salad burger beverage].freeze
 
-    # def salad
-    # def burger
-    # def beverage
-
-    COURSES.each do |name_of_course|
-      define_method(name_of_course.to_s) do
-        Menu.where(day: current_day_of_week)
-            .public_send(name_of_course)
-      end
+    def menu_for(category)
+      Menu.where(day: current_day_of_week)
+          .public_send(category)
     end
 
-    # def orders_for_monday
-    # def orders_for_tuesday
-    # def orders_for_wednesday
-    # ......................
-
-    WEEKDAYS.each do |day|
-      define_method("orders_for_#{day}") do
-        @orders = Order.where("strftime('%w', created_at) = ?", (WEEKDAYS.index(day) + 1).to_s).decorate
-      end
+    def orders_for(day)
+      @orders = Order.where("strftime('%w', created_at) = ?", (WEEKDAYS.index(day) + 1).to_s)
+                     .decorate
     end
 
     def users
-      User.all
+      @users ||= User.where(admin: false)
     end
 
     def new_menu
       @menu = Menu.new
     end
-
-    private
 
     def current_day_of_week
       Date.today.on_weekday? ? Date.today.strftime('%A').downcase : DEFAULT_DAY
